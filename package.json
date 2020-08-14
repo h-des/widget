@@ -2,7 +2,7 @@
   "name": "widget",
   "version": "0.2.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "build/bundle.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
   "source": "components/hello-world/index.js",
