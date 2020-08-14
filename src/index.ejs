@@ -15,22 +15,15 @@
       position: relative;
     }
 
-    .preview::before {
-      content: 'WIDGET PREVIEW';
-      position: absolute;
-      display: block;
-      top: -18px;
-      font-size: 11px;
-      color: rgba(0, 0, 0, 0.5);
-    }
   </style>
 
 </head>
 
 <body>
-  <div data-widget-host="habitat" class="preview">
+  <p>Widget preview</p>
+  <div data-widget-host="deple-widget" class="preview">
     <script type="text/props">
-      { "color": "red"}
+      { "apiKey": "test", "url": "http://localhost:4040"}
     </script>
   </div>
   <script async src="/bundle.js"></script>
