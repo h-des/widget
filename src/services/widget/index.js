@@ -10,3 +10,13 @@ export const submitData = (url, key, body) =>
       'Content-Type': 'application/json',
     },
   });
+
+export const log = (url, key, body) =>
+  fetch(`${url}/api/v1/widget/analytics`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      Authorization: `API_KEY ${key}`,
+      'Content-Type': 'application/json',
+    },
+  });

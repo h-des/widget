@@ -960,6 +960,17 @@ var submitData = function submitData(url, key, body) {
     }
   });
 };
+
+var log = function log(url, key, body) {
+  return fetch(url + '/api/v1/widget/analytics', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      Authorization: 'API_KEY ' + key,
+      'Content-Type': 'application/json'
+    }
+  });
+};
 // CONCATENATED MODULE: ./components/Input/Input.js
 var Input__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1163,11 +1174,16 @@ var App_App = function (_Component) {
 
     return _ret = (_temp = (_this = App__possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
       data: null,
-      isOpen: false
+      isOpen: false,
+      opened: false
     }, _this.handleSubmit = function (data) {
       submitData(_this.props.url, _this.props.apiKey, data);
     }, _this.handleOpen = function () {
-      _this.setState({ isOpen: true });
+      if (!_this.state.opened) {
+        log(_this.props.url, _this.props.apiKey, { event: 'OPENED' });
+      }
+
+      _this.setState({ isOpen: true, opened: true });
     }, _this.handleClose = function () {
       _this.setState({ isOpen: false });
     }, _temp), App__possibleConstructorReturn(_this, _ret);
@@ -1180,6 +1196,7 @@ var App_App = function (_Component) {
           return data.json();
         });
         this.setState({ data: res });
+        log(this.props.url, this.props.apiKey, { event: 'VIEWED' });
       } catch (e) {}
     });
 
@@ -1202,7 +1219,7 @@ var App_App = function (_Component) {
       Object(preact_min["h"])(
         'div',
         { onClick: this.handleClose, 'class': App_style_default.a.bar },
-        'Close'
+        'Zamknij'
       ),
       !data ? App__ref2 : Object(preact_min["h"])(
         preact_min["Fragment"],

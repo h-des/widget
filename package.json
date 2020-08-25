@@ -1,11 +1,11 @@
 {
   "name": "widget",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "main": "build/bundle.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
-  "source": "components/hello-world/index.js",
+  "source": "components/App/index.js",
   "scripts": {
     "build": "preact build --no-prerender --clean --template src/index.ejs --service-worker false",
     "serve": "preact serve",
